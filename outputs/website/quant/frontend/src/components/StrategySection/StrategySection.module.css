@@ -1,0 +1,74 @@
+/* ============================================================
+   StrategySection — wrapper for a themed list of strategy cards
+   ============================================================ */
+
+.section {
+  margin-bottom: var(--spacing-xxl);
+}
+
+/* ── Section header bar ── */
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Bullish tint: subtle green overlay */
+.headerBullish {
+  background-color: color-mix(in srgb, var(--positive) 8%, transparent);
+  border-left: 3px solid var(--positive);
+}
+
+/* Bearish tint: subtle red overlay */
+.headerBearish {
+  background-color: color-mix(in srgb, var(--negative) 8%, transparent);
+  border-left: 3px solid var(--negative);
+}
+
+/* ── Section title ── */
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: var(--size-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Strategy count pill ── */
+.sectionCount {
+  font-family: var(--font-mono);
+  font-size: var(--size-xs);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ── Card grid: single column, full-width cards ── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+/* ── Empty state ── */
+.emptyState {
+  font-family: var(--font-heading);
+  font-size: var(--size-sm);
+  color: var(--text-muted);
+  font-style: italic;
+  padding: var(--spacing-md) 0;
+}
+
+/* ============================================================
+   Responsive — no structural changes needed since the grid
+   is already single-column; only spacing adjusts.
+   ============================================================ */
+@media (max-width: 480px) {
+  .sectionHeader {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+}

@@ -3,6 +3,9 @@ import { Toolbar } from './components/Toolbar/Toolbar.jsx';
 import { Footer } from './components/Footer/Footer.jsx';
 import { MarketOverview } from './components/MarketOverview/MarketOverview.jsx';
 import { SentimentGauge } from './components/SentimentGauge/SentimentGauge.jsx';
+import { StrategySection } from './components/StrategySection/StrategySection.jsx';
+import { bullishStrategies } from './data/bullishStrategies.js';
+import { bearishStrategies } from './data/bearishStrategies.js';
 import styles from './App.module.css';
 
 function AppContent() {
@@ -12,7 +15,16 @@ function AppContent() {
       <main className={styles.main}>
         <MarketOverview />
         <SentimentGauge />
-        {/* Phase 5+ content will be mounted here */}
+        <StrategySection
+          title="Bullish Strategies"
+          strategies={bullishStrategies}
+          direction="bullish"
+        />
+        <StrategySection
+          title="Bearish Strategies"
+          strategies={bearishStrategies}
+          direction="bearish"
+        />
       </main>
       <Footer />
     </div>

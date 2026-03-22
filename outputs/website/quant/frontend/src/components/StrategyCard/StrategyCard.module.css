@@ -1,0 +1,268 @@
+/* ============================================================
+   StrategyCard — collapsible card with progressive disclosure
+   ============================================================ */
+
+.card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  border-left-width: 3px;
+  overflow: hidden;
+  transition:
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* ── Direction accents ── */
+.accentBullish {
+  border-left-color: var(--positive);
+}
+
+.accentBearish {
+  border-left-color: var(--negative);
+}
+
+/* ============================================================
+   Header — clickable toggle button
+   ============================================================ */
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  text-align: left;
+  transition: background-color var(--transition-fast);
+}
+
+.header:hover {
+  background-color: var(--bg-secondary);
+}
+
+.header:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: -2px;
+}
+
+.headerLeft {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-sm);
+  min-width: 0;
+}
+
+/* ── Strategy name — truncate on overflow ── */
+.strategyName {
+  font-family: var(--font-heading);
+  font-size: var(--size-md);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 28ch;
+}
+
+/* ── Risk/reward badge ── */
+.badge {
+  font-family: var(--font-heading);
+  font-size: var(--size-xs);
+  font-weight: var(--weight-medium);
+  padding: 2px var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badgeBullish {
+  background-color: color-mix(in srgb, var(--positive) 15%, transparent);
+  color: var(--positive);
+  border: 1px solid color-mix(in srgb, var(--positive) 35%, transparent);
+}
+
+.badgeBearish {
+  background-color: color-mix(in srgb, var(--negative) 15%, transparent);
+  color: var(--negative);
+  border: 1px solid color-mix(in srgb, var(--negative) 35%, transparent);
+}
+
+/* ── Chevron — rotates on expand ── */
+.chevron {
+  font-size: var(--size-xs);
+  color: var(--text-muted);
+  flex-shrink: 0;
+  display: inline-block;
+  transition: transform var(--transition-normal);
+  transform: rotate(0deg);
+}
+
+.chevronUp {
+  transform: rotate(180deg);
+}
+
+/* ============================================================
+   Body — description + stock table (always visible)
+   ============================================================ */
+.body {
+  padding: 0 var(--spacing-lg) var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.description {
+  font-family: var(--font-heading);
+  font-size: var(--size-sm);
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* ============================================================
+   Tables — shared base styles
+   ============================================================ */
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--size-sm);
+}
+
+.th {
+  font-family: var(--font-heading);
+  font-size: var(--size-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: var(--spacing-xs) var(--spacing-md);
+  text-align: right;
+  background-color: var(--bg-secondary);
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+
+/* First column (Stock name) always left-aligned */
+.th:first-child,
+.td:first-child {
+  text-align: left;
+}
+
+.td {
+  font-family: var(--font-heading);
+  font-size: var(--size-sm);
+  color: var(--text-primary);
+  padding: var(--spacing-xs) var(--spacing-md);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Alternating rows */
+.rowEven {
+  background-color: var(--bg-surface);
+}
+
+.rowOdd {
+  background-color: var(--bg-secondary);
+}
+
+/* ── Mono numerals ── */
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Colour-coded % gain ── */
+.positive {
+  color: var(--positive);
+}
+
+.negative {
+  color: var(--negative);
+}
+
+/* ── Greeks table — slightly compact ── */
+.greeksTable .th,
+.greeksTable .td {
+  padding: 3px var(--spacing-sm);
+}
+
+/* ============================================================
+   Expanded section — rationale + greeks
+   ============================================================ */
+.expanded {
+  border-top: 1px solid var(--border);
+  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.rationaleBlock,
+.greeksBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.subHeading {
+  font-family: var(--font-heading);
+  font-size: var(--size-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.rationaleText {
+  font-family: var(--font-heading);
+  font-size: var(--size-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── Empty state ── */
+.emptyMsg {
+  font-family: var(--font-heading);
+  font-size: var(--size-sm);
+  color: var(--text-muted);
+  font-style: italic;
+  padding: var(--spacing-sm) 0;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 480px) {
+  .header {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .body {
+    padding: 0 var(--spacing-md) var(--spacing-md);
+  }
+
+  .expanded {
+    padding: var(--spacing-md);
+  }
+
+  .strategyName {
+    max-width: 18ch;
+  }
+}
