@@ -1,12 +1,16 @@
 import { ThemeProvider } from './config/ThemeProvider.jsx';
-import { APP_NAME } from './config/theme.js';
+import { Toolbar } from './components/Toolbar/Toolbar.jsx';
+import { Footer } from './components/Footer/Footer.jsx';
+import styles from './App.module.css';
 
 function AppContent() {
   return (
-    <div style={{ padding: 'var(--spacing-xl)' }}>
-      <h1 style={{ fontFamily: 'var(--font-heading)', color: 'var(--text-primary)' }}>
-        {APP_NAME}
-      </h1>
+    <div className={styles.appShell}>
+      <Toolbar />
+      <main className={styles.main}>
+        {/* Phase 3+ content will be mounted here */}
+      </main>
+      <Footer />
     </div>
   );
 }
