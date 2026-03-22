@@ -2,6 +2,7 @@ import { ThemeProvider } from './config/ThemeProvider.jsx';
 import { Toolbar } from './components/Toolbar/Toolbar.jsx';
 import { Footer } from './components/Footer/Footer.jsx';
 import { MarketOverview } from './components/MarketOverview/MarketOverview.jsx';
+import { SentimentGauge } from './components/SentimentGauge/SentimentGauge.jsx';
 import styles from './App.module.css';
 
 function AppContent() {
@@ -10,7 +11,8 @@ function AppContent() {
       <Toolbar />
       <main className={styles.main}>
         <MarketOverview />
-        {/* Phase 4+ content will be mounted here */}
+        <SentimentGauge />
+        {/* Phase 5+ content will be mounted here */}
       </main>
       <Footer />
     </div>

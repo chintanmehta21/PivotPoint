@@ -1,0 +1,94 @@
+/* ============================================================
+   SentimentGauge — section wrapper
+   ============================================================ */
+.section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: var(--size-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--spacing-md);
+}
+
+/* ============================================================
+   Card — centered container, max-width ~400px
+   ============================================================ */
+.gaugeCard {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  max-width: 400px;
+  /* Left-aligned within the page grid (consistent with MarketOverview) */
+  margin: 0;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.gaugeCard:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================================
+   SVG — scales responsively inside the card
+   ============================================================ */
+.svg {
+  width: 100%;
+  /* Height is derived from the viewBox aspect ratio (300:165 ≈ 1.82:1) */
+  height: auto;
+  overflow: visible;
+}
+
+/* ============================================================
+   Text elements below the gauge
+   ============================================================ */
+.score {
+  font-family: var(--font-mono);
+  font-size: var(--size-xxl);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  line-height: 1;
+  margin-top: var(--spacing-xs);
+  /* Keep the large number from causing layout shift */
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font-family: var(--font-heading);
+  font-size: var(--size-md);
+  font-weight: var(--weight-semibold);
+  /* color is set inline by the component to match the active zone */
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.description {
+  font-family: var(--font-heading);
+  font-size: var(--size-xs);
+  font-weight: var(--weight-regular);
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.5;
+  max-width: 30ch;
+}
+
+/* ============================================================
+   Responsive — on narrow screens fill the full width
+   ============================================================ */
+@media (max-width: 480px) {
+  .gaugeCard {
+    max-width: 100%;
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+}
