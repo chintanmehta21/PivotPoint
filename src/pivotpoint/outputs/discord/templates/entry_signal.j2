@@ -1,0 +1,11 @@
+**[{{ app_name }}] {{ direction }} Entry Signal**
+
+Strategy: {{ strategy_name }} ({{ strategy_id }})
+Underlying: {{ underlying }} | Timeframe: {{ timeframe }}
+R:R: {{ rr_ratio }} | Confidence: {{ confidence }}/100
+Max Profit: Rs {{ max_profit }} | Max Loss: Rs {{ max_loss }}
+
+Greeks: D:{{ delta }} G:{{ gamma }} V:{{ vega }} T:{{ theta }}
+{% if notes %}
+Notes: {{ notes }}
+{% endif %}
