@@ -3,10 +3,10 @@ import pytest
 from datetime import date, datetime
 from decimal import Decimal
 
-from pivotpoint.models.contracts import OptionsContract, GreeksSnapshot, PositionLeg, MultiLegPosition
-from pivotpoint.models.market import MarketSnapshot, OptionsChain
-from pivotpoint.models.signals import SignalPayload
-from pivotpoint.utils.types import Direction, TimeFrame, SignalType, Side, OptionType, Underlying
+from quant.models.contracts import OptionsContract, GreeksSnapshot, PositionLeg, MultiLegPosition
+from quant.models.market import MarketSnapshot, OptionsChain
+from quant.models.signals import SignalPayload
+from quant.utils.types import Direction, TimeFrame, SignalType, Side, OptionType, Underlying
 
 
 @pytest.fixture

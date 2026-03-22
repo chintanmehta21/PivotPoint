@@ -4,7 +4,7 @@ from decimal import Decimal
 
 import pytest
 
-from pivotpoint.utils.exceptions import (
+from quant.utils.exceptions import (
     PivotPointError, ContractExpiredError, MissingGreeksError,
     IlliquidStrikeError, MarketClosedError, SignalValidationError,
 )

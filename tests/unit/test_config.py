@@ -1,5 +1,5 @@
 """Tests for configuration management."""
-from pivotpoint.config.settings import Settings
+from quant.config.settings import Settings
 
 
 def test_settings_loads():

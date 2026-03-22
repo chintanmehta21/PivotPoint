@@ -1,6 +1,6 @@
 """Tests for position sizing."""
 from decimal import Decimal
-from pivotpoint.execution.position_sizer import PositionSizer
+from quant.execution.position_sizer import PositionSizer
 
 
 def test_basic_sizing():

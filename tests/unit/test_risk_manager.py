@@ -1,6 +1,6 @@
 """Tests for risk manager."""
 from decimal import Decimal
-from pivotpoint.risk.risk_manager import RiskManager
+from quant.risk.risk_manager import RiskManager
 
 
 def test_signal_within_limits_passes(sample_signal):

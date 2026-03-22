@@ -1,5 +1,5 @@
 """Tests for enums and type aliases."""
-from pivotpoint.utils.types import OptionType, Direction, TimeFrame, Side, Underlying
+from quant.utils.types import OptionType, Direction, TimeFrame, Side, Underlying
 
 
 def test_option_type_values():

@@ -1,6 +1,6 @@
 """Tests for Telegram formatter."""
-from pivotpoint.outputs.telegram.formatter import TelegramFormatter
-from pivotpoint.config.identity import APP_NAME
+from quant.outputs.telegram.formatter import TelegramFormatter
+from quant.config.identity import APP_NAME
 
 
 def test_format_entry_returns_string(sample_signal):

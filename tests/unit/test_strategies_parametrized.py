@@ -1,8 +1,8 @@
 """Parametrized tests for all 14 strategies."""
 import pytest
-from pivotpoint.strategies.registry import StrategyRegistry
-from pivotpoint.strategies.base_strategy import BaseStrategy
-from pivotpoint.utils.types import Direction, TimeFrame
+from quant.strategies.registry import StrategyRegistry
+from quant.strategies.base_strategy import BaseStrategy
+from quant.utils.types import Direction, TimeFrame
 
 registry = StrategyRegistry()
 ALL_STRATEGIES = list(registry.all().values())

@@ -1,8 +1,8 @@
 """Tests for Discord formatter."""
 import discord
-from pivotpoint.outputs.discord.formatter import DiscordFormatter
-from pivotpoint.config.identity import APP_NAME
-from pivotpoint.utils.types import Direction
+from quant.outputs.discord.formatter import DiscordFormatter
+from quant.config.identity import APP_NAME
+from quant.utils.types import Direction
 
 
 def test_format_entry_returns_embed(sample_signal):

@@ -35,7 +35,7 @@ dev = [
 ]
 
 [project.scripts]
-pivotpoint = "pivotpoint.cli:cli"
+pivotpoint = "quant.cli:cli"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -72,7 +72,7 @@ markers = [
 ]
 
 [tool.coverage.run]
-source = ["src/pivotpoint"]
+source = ["src/quant", "src/data_science"]
 omit = ["*/tests/*"]
 
 [tool.coverage.report]
