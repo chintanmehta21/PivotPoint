@@ -1,6 +1,6 @@
 """Tests for Discord formatter."""
 import discord
-from quant.outputs.discord.formatter import DiscordFormatter
+from outputs.discord.formatter import DiscordFormatter
 from quant.config.identity import APP_NAME
 from quant.utils.types import Direction
 

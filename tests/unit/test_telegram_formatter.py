@@ -1,5 +1,5 @@
 """Tests for Telegram formatter."""
-from quant.outputs.telegram.formatter import TelegramFormatter
+from outputs.telegram.formatter import TelegramFormatter
 from quant.config.identity import APP_NAME
 
 

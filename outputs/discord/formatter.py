@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 import discord
 
 from quant.config.identity import APP_NAME, APP_VERSION
-from quant.outputs.base_formatter import BaseFormatter
+from outputs.base_formatter import BaseFormatter
 from quant.utils.types import Direction, SignalType
 
 if TYPE_CHECKING:

@@ -38,7 +38,8 @@ dev = [
 pivotpoint = "quant.cli:cli"
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["src", "."]
+include = ["quant*", "data_science*", "outputs*"]
 
 [tool.ruff]
 line-length = 120
@@ -72,7 +73,7 @@ markers = [
 ]
 
 [tool.coverage.run]
-source = ["src/quant", "src/data_science"]
+source = ["src/quant", "src/data_science", "outputs"]
 omit = ["*/tests/*"]
 
 [tool.coverage.report]

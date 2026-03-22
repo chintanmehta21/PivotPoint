@@ -9,7 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sess
 
 from quant.config.identity import APP_NAME
 from quant.config.settings import settings
-from quant.outputs.website.schema import Base, SignalRecord, TradeRecord
+from outputs.website.schema import Base, SignalRecord, TradeRecord
 
 if TYPE_CHECKING:
     from quant.models.signals import SignalPayload

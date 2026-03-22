@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from quant.config.identity import APP_NAME, APP_VERSION
-from quant.outputs.base_formatter import BaseFormatter
+from outputs.base_formatter import BaseFormatter
 from quant.utils.types import Direction
 
 if TYPE_CHECKING:

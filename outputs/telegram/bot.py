@@ -6,7 +6,7 @@ import structlog
 
 from quant.config.identity import APP_NAME
 from quant.config.settings import settings
-from quant.outputs.telegram.formatter import TelegramFormatter
+from outputs.telegram.formatter import TelegramFormatter
 
 if TYPE_CHECKING:
     from quant.models.signals import SignalPayload

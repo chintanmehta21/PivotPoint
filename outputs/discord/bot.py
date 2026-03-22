@@ -6,7 +6,7 @@ import structlog
 
 from quant.config.identity import APP_NAME
 from quant.config.settings import settings
-from quant.outputs.discord.formatter import DiscordFormatter
+from outputs.discord.formatter import DiscordFormatter
 
 if TYPE_CHECKING:
     from quant.models.signals import SignalPayload
