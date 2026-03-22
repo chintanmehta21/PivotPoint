@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx skills:*)",
+      "Bash(mkdir -p \"C:\\\\Users\\\\LENOVO\\\\Documents\\\\Claude_Code\\\\Projects\\\\PivotPoint\\\\.claude\\\\plugins\")",
+      "Bash(cp -r /tmp/wshobson-agents/plugins/python-development \"C:\\\\Users\\\\LENOVO\\\\Documents\\\\Claude_Code\\\\Projects\\\\PivotPoint\\\\.claude\\\\plugins/python-development\")",
+      "Bash(git clone:*)",
+      "Bash(cp:*)",
+      "Bash(cd:*)"
+    ]
+  },
+  "enabledPlugins": {
+    "claude-md-management@claude-plugins-official": true
+  }
+}
