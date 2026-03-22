@@ -482,4 +482,4 @@ All exceptions defined in `src/quant/data/fyers/exceptions.py` and re-exported v
 | **Ongoing (WebSocket)** | **0** | All real-time data via stream |
 | **Chain refresh** | **4-8/refresh** | Only when expiry rolls or manual trigger |
 
-Daily budget usage: ~50-100 calls out of 100,000 limit.
+Daily budget usage: ~50-100 calls for a minimal session. The 100K/day limit is generous — use it freely for more frequent chain refreshes, deeper historical backfills, or additional account data polling. The key constraint is the per-second (10) and per-minute (200) limits, not the daily cap. Design for throughput efficiency (batching, WebSocket), not call conservation. Never exceed limits — the rate limiter in `client.py` enforces hard guardrails.
