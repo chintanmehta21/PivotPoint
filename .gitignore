@@ -33,6 +33,11 @@ htmlcov/
 *.db
 *.sqlite3
 
+# Secrets
+secrets/*
+!secrets/.gitkeep
+!secrets/README.md
+
 # Distribution
 *.whl
 *.tar.gz
