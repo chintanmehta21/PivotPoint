@@ -38,6 +38,13 @@ secrets/*
 !secrets/.gitkeep
 !secrets/README.md
 
+# Node (not needed — Python project)
+node_modules/
+package-lock.json
+
+# Build artifacts
+*.egg-info/
+
 # Distribution
 *.whl
 *.tar.gz
