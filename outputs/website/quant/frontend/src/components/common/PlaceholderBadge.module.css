@@ -1,0 +1,28 @@
+/* ============================================================
+   PlaceholderBadge — unobtrusive inline pill
+   ============================================================ */
+.badge {
+  display: inline-block;
+  vertical-align: middle;
+  /* Slight optical alignment nudge so the pill sits on the text baseline */
+  margin-left: var(--spacing-sm);
+  margin-bottom: 1px;
+
+  padding: 1px var(--spacing-sm);
+
+  font-family: var(--font-heading);
+  font-size: var(--size-xs);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+
+  /* Pill shape */
+  border-radius: 999px;
+
+  /* accent-secondary at ~18% opacity — works in both themes without hex */
+  background-color: color-mix(in srgb, var(--accent-secondary) 18%, transparent);
+
+  /* Ensure it never disrupts line height */
+  line-height: 1.6;
+}

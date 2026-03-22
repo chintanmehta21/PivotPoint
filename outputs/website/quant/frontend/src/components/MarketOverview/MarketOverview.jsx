@@ -1,4 +1,5 @@
 import { marketIndices } from '../../data/marketData';
+import { PlaceholderBadge } from '../common/PlaceholderBadge';
 import { ValueFlash } from '../common/ValueFlash';
 import styles from './MarketOverview.module.css';
 
@@ -51,10 +52,13 @@ function IndexCard({ index }) {
 }
 
 export function MarketOverview() {
+  const hasPlaceholder = marketIndices.some((idx) => idx.isPlaceholder);
+
   return (
     <section className={styles.section} aria-labelledby="market-overview-title">
       <h2 id="market-overview-title" className={styles.sectionTitle}>
         Market Overview
+        <PlaceholderBadge isPlaceholder={hasPlaceholder} />
       </h2>
       <div className={styles.strip}>
         {marketIndices.map((index) => (

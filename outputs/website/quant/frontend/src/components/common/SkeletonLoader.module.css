@@ -1,0 +1,32 @@
+/* ============================================================
+   SkeletonLoader — pulsing placeholder blocks
+   ============================================================ */
+
+/* Pulse keyframes: opacity oscillates between 0.3 and 0.7 */
+@keyframes skeleton-pulse {
+  0%   { opacity: 0.3; }
+  50%  { opacity: 0.7; }
+  100% { opacity: 0.3; }
+}
+
+/* ============================================================
+   Wrapper — flex column so multiple lines stack with a gap
+   (gap is applied inline only when count > 1)
+   ============================================================ */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   Block — a single skeleton line
+   Width, height, and border-radius come from inline styles
+   so they are fully prop-driven.
+   ============================================================ */
+.block {
+  display: block;
+  background-color: var(--border);
+  animation: skeleton-pulse 1.6s ease-in-out infinite;
+  /* Prevent inline element collapsing to zero height */
+  flex-shrink: 0;
+}

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { PlaceholderBadge } from '../common/PlaceholderBadge';
 import styles from './StrategyCard.module.css';
 
 // ── Formatters ──────────────────────────────────────────────────────────────
@@ -111,7 +112,10 @@ export function StrategyCard({ strategy, direction }) {
         aria-label={`${expanded ? 'Collapse' : 'Expand'} ${strategy.name}`}
       >
         <div className={styles.headerLeft}>
-          <h3 className={styles.strategyName}>{strategy.name ?? 'Unnamed Strategy'}</h3>
+          <h3 className={styles.strategyName}>
+            {strategy.name ?? 'Unnamed Strategy'}
+            <PlaceholderBadge isPlaceholder={strategy.isPlaceholder} />
+          </h3>
           {strategy.riskReward && (
             <span className={`${styles.badge} ${isBullish ? styles.badgeBullish : styles.badgeBearish}`}>
               {strategy.riskReward}

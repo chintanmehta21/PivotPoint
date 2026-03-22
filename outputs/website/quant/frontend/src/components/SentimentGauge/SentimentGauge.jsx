@@ -1,4 +1,5 @@
 import { sentimentData } from '../../data/sentimentData';
+import { PlaceholderBadge } from '../common/PlaceholderBadge';
 import styles from './SentimentGauge.module.css';
 
 /* ============================================================
@@ -120,13 +121,14 @@ function resolveZoneColor(score, zones) {
    Main component
    ============================================================ */
 export function SentimentGauge() {
-  const { score, label, description, zones } = sentimentData;
+  const { score, label, description, zones, isPlaceholder } = sentimentData;
   const labelColor = resolveZoneColor(score, zones);
 
   return (
     <section className={styles.section} aria-labelledby="sentiment-title">
       <h2 id="sentiment-title" className={styles.sectionTitle}>
         Market Sentiment
+        <PlaceholderBadge isPlaceholder={isPlaceholder} />
       </h2>
 
       <div className={styles.gaugeCard}>
