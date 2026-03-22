@@ -1,6 +1,7 @@
 import { ThemeProvider } from './config/ThemeProvider.jsx';
 import { Toolbar } from './components/Toolbar/Toolbar.jsx';
 import { Footer } from './components/Footer/Footer.jsx';
+import { MarketOverview } from './components/MarketOverview/MarketOverview.jsx';
 import styles from './App.module.css';
 
 function AppContent() {
@@ -8,7 +9,8 @@ function AppContent() {
     <div className={styles.appShell}>
       <Toolbar />
       <main className={styles.main}>
-        {/* Phase 3+ content will be mounted here */}
+        <MarketOverview />
+        {/* Phase 4+ content will be mounted here */}
       </main>
       <Footer />
     </div>

@@ -1,0 +1,134 @@
+/* ============================================================
+   MarketOverview — section wrapper
+   ============================================================ */
+.section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: var(--size-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--spacing-md);
+}
+
+/* ============================================================
+   Strip — responsive grid container
+   6 across on wide, 3 on medium, 2 on small, scrollable on xs
+   ============================================================ */
+.strip {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--spacing-md);
+}
+
+/* Medium screens: 3 columns */
+@media (max-width: 1024px) {
+  .strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Small screens: 2 columns */
+@media (max-width: 640px) {
+  .strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Very small screens: horizontal scroll, fixed card width */
+@media (max-width: 375px) {
+  .strip {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: var(--spacing-sm);
+    /* Hide scrollbar track but keep scrollable */
+    padding-bottom: var(--spacing-xs);
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ============================================================
+   Card
+   ============================================================ */
+.card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  cursor: default;
+  transition:
+    border-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+  /* Ensure very long names don't blow layout */
+  min-width: 0;
+}
+
+/* Very small screens: fixed min-width so cards don't collapse */
+@media (max-width: 375px) {
+  .card {
+    min-width: 140px;
+    flex-shrink: 0;
+  }
+}
+
+.card:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================================
+   Card internals
+   ============================================================ */
+.cardName {
+  font-family: var(--font-heading);
+  font-size: var(--size-xs);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  /* Truncate long names with ellipsis */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardValue {
+  font-family: var(--font-mono);
+  font-size: var(--size-md);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  /* Prevent line breaks in long numbers */
+  white-space: nowrap;
+}
+
+.cardChange {
+  font-family: var(--font-mono);
+  font-size: var(--size-xs);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   Change direction colours
+   ============================================================ */
+.positive {
+  color: var(--positive);
+}
+
+.negative {
+  color: var(--negative);
+}
+
+.neutral {
+  color: var(--text-muted);
+}

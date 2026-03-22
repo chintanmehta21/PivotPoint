@@ -1,0 +1,13 @@
+.wrapper {
+  display: inline;
+  border-radius: var(--radius-sm);
+  /* transition intentionally omitted — animation handles the effect */
+}
+
+/* The .flash class is applied and removed programmatically by ValueFlash.jsx.
+   The keyframes are defined in global.css as flash-highlight so they share the
+   same animation token across the app. */
+.flash {
+  border-radius: var(--radius-sm);
+  animation: flash-highlight 600ms ease forwards;
+}
