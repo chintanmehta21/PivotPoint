@@ -1,3 +1,7 @@
+/**
+ * StrategySection — themed wrapper that renders a titled, color-accented section
+ * (bullish or bearish) containing a vertical list of collapsible StrategyCards.
+ */
 import { StrategyCard } from '../StrategyCard/StrategyCard.jsx';
 import styles from './StrategySection.module.css';
 

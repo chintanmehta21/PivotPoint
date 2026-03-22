@@ -1,3 +1,7 @@
+/**
+ * MarketOverview — horizontal strip of index cards (Nifty 50, Bank Nifty, etc.)
+ * showing live/placeholder price and percentage change for each Indian market index.
+ */
 import { marketIndices } from '../../data/marketData';
 import { PlaceholderBadge } from '../common/PlaceholderBadge';
 import { ValueFlash } from '../common/ValueFlash';

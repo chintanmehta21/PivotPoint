@@ -1,3 +1,7 @@
+/**
+ * StrategyCard — collapsible card displaying a single options strategy with
+ * entry/target/stop-loss stock table and an expandable Greeks + rationale panel.
+ */
 import { useState } from 'react';
 import { PlaceholderBadge } from '../common/PlaceholderBadge';
 import styles from './StrategyCard.module.css';

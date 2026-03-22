@@ -33,7 +33,7 @@
   color: var(--text-muted);
   cursor: pointer;
   transition: color var(--transition-fast);
-  padding: 2px 4px;
+  padding: var(--spacing-xs);
   border-radius: var(--radius-sm);
 }
 

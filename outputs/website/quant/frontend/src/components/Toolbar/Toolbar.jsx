@@ -1,3 +1,7 @@
+/**
+ * Toolbar — sticky top bar showing the app name and a dark/light theme toggle.
+ * Renders as a <header> landmark with role="banner".
+ */
 import { useTheme } from '../../hooks/useTheme';
 import { APP_NAME } from '../../config/theme';
 import styles from './Toolbar.module.css';

@@ -1,3 +1,7 @@
+/**
+ * App — root component. Wraps the full page shell in ThemeProvider so all
+ * child components receive CSS variable overrides for the active theme.
+ */
 import { ThemeProvider } from './config/ThemeProvider.jsx';
 import { Toolbar } from './components/Toolbar/Toolbar.jsx';
 import { Footer } from './components/Footer/Footer.jsx';

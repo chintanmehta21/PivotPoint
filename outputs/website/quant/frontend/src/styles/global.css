@@ -33,8 +33,8 @@ body {
    in light mode because the colours are still readable.
    ============================================================ */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 8px;  /* scrollbar track width — browser pseudo-element, no token */
+  height: 8px; /* scrollbar track height — browser pseudo-element, no token */
 }
 
 ::-webkit-scrollbar-track {
@@ -67,5 +67,5 @@ body {
 
 .flash {
   border-radius: var(--radius-sm);
-  animation: flash-highlight 600ms var(--transition-fast) forwards;
+  animation: flash-highlight 600ms ease forwards;
 }

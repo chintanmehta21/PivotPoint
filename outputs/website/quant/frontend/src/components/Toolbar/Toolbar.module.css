@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 48px;
+  height: 48px; /* fixed component height — not a spacing token */
   padding: 0 var(--spacing-lg);
   background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border);
@@ -26,8 +26,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 32px;  /* fixed icon button size — not a spacing token */
+  height: 32px; /* fixed icon button size — not a spacing token */
   padding: 0;
   background: transparent;
   border: 1px solid var(--border);

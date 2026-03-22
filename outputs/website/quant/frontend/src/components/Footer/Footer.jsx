@@ -1,3 +1,7 @@
+/**
+ * Footer — disclaimer text, nav links, and last-updated timestamp.
+ * Renders as a <footer> landmark at the bottom of the page shell.
+ */
 import styles from './Footer.module.css';
 
 const DISCLAIMER =

@@ -78,6 +78,7 @@
   font-family: var(--font-heading);
   font-size: var(--size-xs);
   font-weight: var(--weight-medium);
+  /* 2px: intentional micro-padding — half of --spacing-xs, no token exists */
   padding: 2px var(--spacing-sm);
   border-radius: var(--radius-sm);
   white-space: nowrap;
@@ -200,6 +201,7 @@
 /* ── Greeks table — slightly compact ── */
 .greeksTable .th,
 .greeksTable .td {
+  /* 3px: intentional compact row height — sub-token micro-padding */
   padding: 3px var(--spacing-sm);
 }
 
