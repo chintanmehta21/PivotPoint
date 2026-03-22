@@ -1,0 +1,71 @@
+/* ============================================================
+   CSS Reset
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================================
+   Body — all values driven by CSS variables injected by
+   ThemeProvider. Zero hardcoded colours or fonts here.
+   ============================================================ */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: var(--size-md);
+  font-weight: var(--weight-regular);
+  line-height: 1.6;
+  min-height: 100vh;
+
+  /* Smooth theme transitions */
+  transition:
+    background-color var(--transition-normal),
+    color var(--transition-normal);
+}
+
+/* ============================================================
+   Scrollbar — styled for dark theme; falls back gracefully
+   in light mode because the colours are still readable.
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--bg-secondary);
+}
+
+/* ============================================================
+   .flash utility — brief gold highlight for value changes
+   ============================================================ */
+@keyframes flash-highlight {
+  0%   { background-color: var(--accent-primary); color: var(--bg-primary); }
+  70%  { background-color: var(--accent-primary); color: var(--bg-primary); }
+  100% { background-color: transparent; color: inherit; }
+}
+
+.flash {
+  border-radius: var(--radius-sm);
+  animation: flash-highlight 600ms var(--transition-fast) forwards;
+}
