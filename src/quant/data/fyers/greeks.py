@@ -46,12 +46,12 @@ def _norm_pdf(x: np.ndarray) -> np.ndarray:
 def _d1_d2(
     spots: np.ndarray,
     strikes: np.ndarray,
-    T: float,
+    T: np.ndarray | float,
     ivs: np.ndarray,
     r: float,
 ) -> tuple[np.ndarray, np.ndarray]:
     """Compute d1 and d2 for Black-Scholes formula (vectorized)."""
-    sqrt_T = _sqrt(T)
+    sqrt_T = np.sqrt(T)
     log_moneyness = np.log(spots / strikes)
     d1 = (log_moneyness + (r + 0.5 * ivs**2) * T) / (ivs * sqrt_T)
     d2 = d1 - ivs * sqrt_T
@@ -158,7 +158,7 @@ def compute_iv(
 
         price = black_scholes_price(spots, strikes, T, iv, r, option_types)
         d1, _ = _d1_d2(spots, strikes, T, iv, r)
-        vega_raw = spots * _norm_pdf(d1) * _sqrt(T)  # raw vega (not /100)
+        vega_raw = spots * _norm_pdf(d1) * np.sqrt(T)  # raw vega (not /100)
 
         diff = price - premiums
         # Avoid division by near-zero vega
@@ -208,7 +208,7 @@ def compute_greeks(
     ivs = np.asarray(ivs, dtype=float)
     option_types = np.asarray(option_types, dtype=int)
 
-    sqrt_T = _sqrt(T)
+    sqrt_T = np.sqrt(T)
     d1, d2 = _d1_d2(spots, strikes, T, ivs, r)
     nd1 = _norm_pdf(d1)
     discount = np.exp(-r * T)
