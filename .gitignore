@@ -51,3 +51,13 @@ package-lock.json
 # Distribution
 *.whl
 *.tar.gz
+
+# Claude Code local
+.claude/skills/
+.claude/settings.*
+
+# QA artifacts
+.gstack/
+
+# Frontend build
+outputs/website/quant/frontend/dist/
