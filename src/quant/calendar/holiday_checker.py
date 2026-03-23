@@ -8,6 +8,7 @@ Layer 2: exchange_calendars XBOM.is_session()
 Layer 3: NSE API fetch (cached daily)
 Layer 4: holidays.yaml manual overrides (checked first, highest priority)
 """
+
 from __future__ import annotations
 
 import datetime as dt
@@ -102,10 +103,12 @@ class HolidayChecker:
             entries: list[dict[str, str]] = []
             for segment in ("FO", "CM"):
                 for entry in data.get(segment, []):
-                    entries.append({
-                        "tradingDate": entry.get("tradingDate", ""),
-                        "description": entry.get("description", "Market Holiday"),
-                    })
+                    entries.append(
+                        {
+                            "tradingDate": entry.get("tradingDate", ""),
+                            "description": entry.get("description", "Market Holiday"),
+                        }
+                    )
             if self._nse_cache is None:
                 self._nse_cache = {}
             self._nse_cache[year] = entries

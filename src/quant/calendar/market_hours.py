@@ -1,4 +1,5 @@
 """NSE market hours and IST timezone constants."""
+
 from datetime import time
 from zoneinfo import ZoneInfo
 

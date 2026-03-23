@@ -1,4 +1,5 @@
 """Three-tier virtual portfolio simulation."""
+
 from __future__ import annotations
 
 from datetime import date
@@ -77,7 +78,9 @@ class PortfolioTracker:
             unrealized = Decimal("0")  # TODO: mark-to-market
             wins = sum(1 for t in closed_trades if (t.realized_pnl or Decimal("0")) > 0)
             win_rate = wins / len(closed_trades) if closed_trades else 0.0
-            best = max(closed_trades, key=lambda t: t.realized_pnl or Decimal("0")).strategy_id if closed_trades else "—"
+            best = (
+                max(closed_trades, key=lambda t: t.realized_pnl or Decimal("0")).strategy_id if closed_trades else "—"
+            )
             worst = (
                 min(closed_trades, key=lambda t: t.realized_pnl or Decimal("0")).strategy_id if closed_trades else "—"
             )

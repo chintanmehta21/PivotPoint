@@ -19,6 +19,7 @@ export const theme = {
   },
   typography: {
     fontHeading: "'Inter', sans-serif",
+    fontBrand: "'Orbitron', sans-serif",
     fontMono: "'JetBrains Mono', monospace",
     sizes: { xs: '0.75rem', sm: '0.875rem', md: '1rem', lg: '1.25rem', xl: '1.5rem', xxl: '2rem' },
     weights: { regular: 400, medium: 500, semibold: 600, bold: 700 },

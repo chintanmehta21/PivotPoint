@@ -3,6 +3,7 @@
 Separate from BaseFormatter (which handles individual signal alerts).
 Report formatting has different methods: report, holiday, error, drill-downs.
 """
+
 from __future__ import annotations
 
 from abc import ABC, abstractmethod

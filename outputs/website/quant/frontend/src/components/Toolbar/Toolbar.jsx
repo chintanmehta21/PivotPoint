@@ -58,6 +58,8 @@ export function Toolbar() {
 
   return (
     <header className={styles.toolbar} role="banner">
+      {/* Spacer for symmetry — matches toggle button width */}
+      <div className={styles.spacer} />
       <span className={styles.appName}>{APP_NAME}</span>
       <button
         className={styles.toggleButton}

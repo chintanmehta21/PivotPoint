@@ -1,4 +1,5 @@
 """Daily report generation pipeline orchestrator."""
+
 from __future__ import annotations
 
 from datetime import date, datetime

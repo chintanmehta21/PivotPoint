@@ -1,4 +1,5 @@
 """Telegram daily report formatter using MarkdownV2."""
+
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
@@ -82,12 +83,8 @@ class TelegramReportFormatter(BaseReportFormatter):
 
             # Institutional flow
             lines.append("*🏦 Institutional Flow*")
-            lines.append(
-                f"├ FII: *{_escape_md(f'{fii_arrow} ₹{abs(float(m.fii_net_cash)):,.0f} Cr')}*"
-            )
-            lines.append(
-                f"└ DII: *{_escape_md(f'{dii_arrow} ₹{abs(float(m.dii_net_cash)):,.0f} Cr')}*"
-            )
+            lines.append(f"├ FII: *{_escape_md(f'{fii_arrow} ₹{abs(float(m.fii_net_cash)):,.0f} Cr')}*")
+            lines.append(f"└ DII: *{_escape_md(f'{dii_arrow} ₹{abs(float(m.dii_net_cash)):,.0f} Cr')}*")
             lines.append("")
 
         # Top signals

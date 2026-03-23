@@ -56,6 +56,7 @@ function injectCssVars(modeName) {
   const { typography, spacing, radius, transitions } = theme;
 
   root.style.setProperty('--font-heading', typography.fontHeading);
+  root.style.setProperty('--font-brand', typography.fontBrand);
   root.style.setProperty('--font-mono', typography.fontMono);
 
   Object.entries(typography.sizes).forEach(([key, val]) => {
