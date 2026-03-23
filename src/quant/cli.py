@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import click
-import structlog
 
 from quant.config.identity import APP_NAME, APP_VERSION
 from quant.config.settings import settings
@@ -53,6 +52,37 @@ def serve() -> None:
     click.echo(f"[{APP_NAME}] Starting alert services...")
     click.echo("  NOTE: Requires DISCORD__BOT_TOKEN and TELEGRAM__BOT_TOKEN in .env")
     click.echo("  Bot implementations pending (Phase 4).")
+
+
+@cli.command()
+@click.option("--type", "report_type", type=click.Choice(["morning", "evening"]), required=True,
+              help="Report type: morning (pre-market) or evening (post-market)")
+@click.option("--dry-run", is_flag=True, help="Generate report but don't dispatch to channels")
+def report(report_type: str, dry_run: bool) -> None:
+    """Generate and send the daily report."""
+    import asyncio
+
+    from quant.models.daily_report import ReportStatus, ReportType
+    from quant.report.engine import DailyReportEngine
+
+    rt = ReportType.MORNING if report_type == "morning" else ReportType.EVENING
+    click.echo(f"[{APP_NAME}] Generating {report_type} report...")
+
+    engine = DailyReportEngine()
+    result = asyncio.run(engine.generate(rt, dry_run=dry_run))
+
+    if result.report_status == ReportStatus.SUCCESS:
+        click.echo("  Status: SUCCESS")
+        click.echo(f"  Date: {result.date}")
+        if result.market_macros:
+            click.echo(f"  NIFTY: {result.market_macros.nifty_price}")
+    elif result.report_status == ReportStatus.MARKET_HOLIDAY:
+        click.echo(f"  Status: MARKET HOLIDAY — {result.holiday_name}")
+        click.echo(f"  Next trading day: {result.next_trading_day}")
+    else:
+        click.echo(f"  Status: ERROR — {result.error_category}")
+        click.echo(f"  Detail: {result.error_detail}")
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":
