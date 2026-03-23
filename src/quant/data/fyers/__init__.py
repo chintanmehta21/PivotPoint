@@ -1,0 +1,1 @@
+"""Fyers data provider package."""

@@ -51,3 +51,18 @@ class StrategyEvaluationError(PivotPointError):
         self.strategy_id = strategy_id
         self.reason = reason
         super().__init__(f"Strategy evaluation failed for {strategy_id}: {reason}")
+
+
+# Fyers exceptions (re-exported for convenience via lazy import to avoid circular deps)
+_FYERS_EXCEPTION_NAMES = (
+    "FyersError", "FyersAuthError", "FyersRateLimitError",
+    "FyersAPIError", "FyersWebSocketError", "FyersDataError",
+)
+
+
+def __getattr__(name: str):  # noqa: N807
+    if name in _FYERS_EXCEPTION_NAMES:
+        import importlib
+        mod = importlib.import_module("quant.data.fyers.exceptions")
+        return getattr(mod, name)
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
