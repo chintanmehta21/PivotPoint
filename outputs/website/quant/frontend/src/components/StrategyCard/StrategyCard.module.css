@@ -183,6 +183,27 @@
   background-color: var(--bg-secondary);
 }
 
+/* ── Stock name cell with industry badge ── */
+.stockNameCell {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.industryBadge {
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: var(--weight-medium);
+  color: var(--accent-secondary);
+  background-color: color-mix(in srgb, var(--accent-secondary) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent-secondary) 30%, transparent);
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
 /* ── Mono numerals ── */
 .mono {
   font-family: var(--font-mono);

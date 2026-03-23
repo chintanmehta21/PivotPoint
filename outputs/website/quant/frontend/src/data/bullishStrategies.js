@@ -8,6 +8,7 @@ export const bullishStrategies = [
     stocks: [
       {
         name: 'RELIANCE',
+        industry: 'Oil & Gas',
         entry: 2850,
         target: 2950,
         stopLoss: 2800,
@@ -16,6 +17,7 @@ export const bullishStrategies = [
       },
       {
         name: 'TCS',
+        industry: 'IT Services',
         entry: 3980,
         target: 4100,
         stopLoss: 3920,
@@ -24,6 +26,7 @@ export const bullishStrategies = [
       },
       {
         name: 'INFY',
+        industry: 'IT Services',
         entry: 1520,
         target: 1580,
         stopLoss: 1490,
@@ -32,6 +35,7 @@ export const bullishStrategies = [
       },
       {
         name: 'HDFCBANK',
+        industry: 'Banking',
         entry: 1680,
         target: 1740,
         stopLoss: 1650,
@@ -40,6 +44,7 @@ export const bullishStrategies = [
       },
       {
         name: 'ICICIBANK',
+        industry: 'Banking',
         entry: 1120,
         target: 1165,
         stopLoss: 1095,
@@ -58,6 +63,7 @@ export const bullishStrategies = [
     stocks: [
       {
         name: 'BAJFINANCE',
+        industry: 'NBFC',
         entry: 7200,
         target: 7500,
         stopLoss: 7050,
@@ -66,6 +72,7 @@ export const bullishStrategies = [
       },
       {
         name: 'TATAMOTORS',
+        industry: 'Auto',
         entry: 680,
         target: 720,
         stopLoss: 660,
@@ -74,6 +81,7 @@ export const bullishStrategies = [
       },
       {
         name: 'SBIN',
+        industry: 'Banking',
         entry: 780,
         target: 820,
         stopLoss: 760,
@@ -92,6 +100,7 @@ export const bullishStrategies = [
     stocks: [
       {
         name: 'LT',
+        industry: 'Infra',
         entry: 3450,
         target: 3520,
         stopLoss: 3400,
@@ -100,6 +109,7 @@ export const bullishStrategies = [
       },
       {
         name: 'MARUTI',
+        industry: 'Auto',
         entry: 10800,
         target: 11000,
         stopLoss: 10650,
@@ -108,6 +118,7 @@ export const bullishStrategies = [
       },
       {
         name: 'WIPRO',
+        industry: 'IT Services',
         entry: 480,
         target: 500,
         stopLoss: 470,
@@ -116,6 +127,7 @@ export const bullishStrategies = [
       },
       {
         name: 'ASIANPAINT',
+        industry: 'Paints',
         entry: 2850,
         target: 2920,
         stopLoss: 2810,

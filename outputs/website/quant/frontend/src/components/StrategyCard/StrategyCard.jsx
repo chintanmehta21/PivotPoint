@@ -45,7 +45,14 @@ function StockTable({ stocks }) {
         <tbody>
           {stocks.map((stock, idx) => (
             <tr key={stock.name ?? idx} className={idx % 2 === 0 ? styles.rowEven : styles.rowOdd}>
-              <td className={styles.td}>{stock.name ?? 'N/A'}</td>
+              <td className={styles.td}>
+                <span className={styles.stockNameCell}>
+                  {stock.name ?? 'N/A'}
+                  {stock.industry && (
+                    <span className={styles.industryBadge}>{stock.industry}</span>
+                  )}
+                </span>
+              </td>
               <td className={`${styles.td} ${styles.mono}`}>{fmtPrice(stock.entry)}</td>
               <td className={`${styles.td} ${styles.mono}`}>{fmtPrice(stock.target)}</td>
               <td className={`${styles.td} ${styles.mono}`}>{fmtPrice(stock.stopLoss)}</td>

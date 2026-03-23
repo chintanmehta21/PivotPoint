@@ -8,6 +8,7 @@ export const bearishStrategies = [
     stocks: [
       {
         name: 'RELIANCE',
+        industry: 'Oil & Gas',
         entry: 2850,
         target: 2750,
         stopLoss: 2900,
@@ -16,6 +17,7 @@ export const bearishStrategies = [
       },
       {
         name: 'HDFCBANK',
+        industry: 'Banking',
         entry: 1680,
         target: 1620,
         stopLoss: 1710,
@@ -24,6 +26,7 @@ export const bearishStrategies = [
       },
       {
         name: 'KOTAKBANK',
+        industry: 'Banking',
         entry: 1820,
         target: 1760,
         stopLoss: 1850,
@@ -32,6 +35,7 @@ export const bearishStrategies = [
       },
       {
         name: 'AXISBANK',
+        industry: 'Banking',
         entry: 1150,
         target: 1100,
         stopLoss: 1175,
@@ -50,6 +54,7 @@ export const bearishStrategies = [
     stocks: [
       {
         name: 'TATAMOTORS',
+        industry: 'Auto',
         entry: 680,
         target: 630,
         stopLoss: 700,
@@ -58,6 +63,7 @@ export const bearishStrategies = [
       },
       {
         name: 'BAJFINANCE',
+        industry: 'NBFC',
         entry: 7200,
         target: 6900,
         stopLoss: 7350,
@@ -66,6 +72,7 @@ export const bearishStrategies = [
       },
       {
         name: 'ADANIENT',
+        industry: 'Conglomerate',
         entry: 2400,
         target: 2250,
         stopLoss: 2480,
@@ -84,6 +91,7 @@ export const bearishStrategies = [
     stocks: [
       {
         name: 'TCS',
+        industry: 'IT Services',
         entry: 3980,
         target: 3850,
         stopLoss: 4050,
@@ -92,6 +100,7 @@ export const bearishStrategies = [
       },
       {
         name: 'INFY',
+        industry: 'IT Services',
         entry: 1520,
         target: 1460,
         stopLoss: 1550,
@@ -100,6 +109,7 @@ export const bearishStrategies = [
       },
       {
         name: 'HINDUNILVR',
+        industry: 'FMCG',
         entry: 2580,
         target: 2480,
         stopLoss: 2630,
@@ -108,6 +118,7 @@ export const bearishStrategies = [
       },
       {
         name: 'NESTLEIND',
+        industry: 'FMCG',
         entry: 2450,
         target: 2350,
         stopLoss: 2500,
