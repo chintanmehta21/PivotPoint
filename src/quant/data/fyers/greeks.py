@@ -1,5 +1,7 @@
 """Vectorized Black-Scholes Greeks engine using NumPy (no scipy)."""
-from math import erf as _math_erf, pi, sqrt as _sqrt
+from math import erf as _math_erf
+from math import pi
+from math import sqrt as _sqrt
 
 import numpy as np
 

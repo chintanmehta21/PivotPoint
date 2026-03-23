@@ -19,7 +19,6 @@ from __future__ import annotations
 
 import re
 from datetime import date
-from typing import Dict
 
 from quant.utils.types import Underlying
 
@@ -27,20 +26,20 @@ from quant.utils.types import Underlying
 # Month codes
 # ---------------------------------------------------------------------------
 
-MONTH_CODES: Dict[int, str] = {
+MONTH_CODES: dict[int, str] = {
     1: "1", 2: "2", 3: "3", 4: "4",
     5: "5", 6: "6", 7: "7", 8: "8",
     9: "9", 10: "O", 11: "N", 12: "D",
 }
 
 # Reverse mapping: single-char code → month number (used in parse)
-_MONTH_CODE_TO_INT: Dict[str, int] = {v: k for k, v in MONTH_CODES.items()}
+_MONTH_CODE_TO_INT: dict[str, int] = {v: k for k, v in MONTH_CODES.items()}
 
 # ---------------------------------------------------------------------------
 # Index and VIX symbols
 # ---------------------------------------------------------------------------
 
-INDEX_SYMBOLS: Dict[Underlying, str] = {
+INDEX_SYMBOLS: dict[Underlying, str] = {
     Underlying.NIFTY: "NSE:NIFTY50-INDEX",
     Underlying.BANKNIFTY: "NSE:NIFTYBANK-INDEX",
 }
@@ -51,12 +50,12 @@ VIX_SYMBOL: str = "NSE:INDIAVIX-INDEX"
 # Default chain parameters per underlying
 # ---------------------------------------------------------------------------
 
-_DEFAULT_RANGE: Dict[Underlying, int] = {
+_DEFAULT_RANGE: dict[Underlying, int] = {
     Underlying.NIFTY: 500,
     Underlying.BANKNIFTY: 500,
 }
 
-_DEFAULT_INTERVAL: Dict[Underlying, int] = {
+_DEFAULT_INTERVAL: dict[Underlying, int] = {
     Underlying.NIFTY: 50,
     Underlying.BANKNIFTY: 100,
 }

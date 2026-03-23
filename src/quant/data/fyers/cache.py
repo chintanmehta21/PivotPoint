@@ -2,12 +2,11 @@
 from __future__ import annotations
 
 import time
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import Any, Protocol
 
 import pandas as pd
-
 
 # ---------------------------------------------------------------------------
 # Typing: minimal protocol so the real FyersClient is never imported here
@@ -54,7 +53,7 @@ def _clean_symbol(symbol: str) -> str:
 
 
 def _ts_to_date(ts: int) -> date:
-    return datetime.fromtimestamp(ts, tz=timezone.utc).date()
+    return datetime.fromtimestamp(ts, tz=UTC).date()
 
 
 def _candles_to_df(candles: list[list[Any]]) -> pd.DataFrame:

@@ -16,7 +16,7 @@ Design decisions
 from __future__ import annotations
 
 import logging
-from datetime import date, datetime, timezone
+from datetime import UTC, date, datetime
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
@@ -181,7 +181,7 @@ class FyersProvider:
         return MarketSnapshot(
             underlying=underlying,
             price=spot,
-            timestamp=datetime.now(tz=timezone.utc),
+            timestamp=datetime.now(tz=UTC),
             vix_level=vix,
         )
 
