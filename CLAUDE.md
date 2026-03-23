@@ -56,6 +56,11 @@ Fyers API → MarketDataProvider (Protocol)
 - **Decimal for money**: strikes, premiums, P&L use `Decimal`, never `float`
 - **Custom exception hierarchy**: `PivotPointError` base in `quant/utils/exceptions.py` with domain-specific subtypes
 
+## Commit Messages
+
+- Use ONLY the message the user provides. If no message given, write a single-line commit message of 5-10 words explaining the major changes.
+- NEVER include "Co-authored-by", "Co-Authored-By", or any attribution to Claude/AI in commit messages or trailers.
+
 ## Critical Conventions
 
 - **APP_NAME is a single-point config** in `src/quant/config/identity.py` (overridable via `APP_NAME` env var). Never hardcode "PivotPoint" — always import from `quant.config.identity`
