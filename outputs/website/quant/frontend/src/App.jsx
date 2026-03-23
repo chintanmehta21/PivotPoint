@@ -10,6 +10,8 @@ import { SentimentGauge } from './components/SentimentGauge/SentimentGauge.jsx';
 import { StrategySection } from './components/StrategySection/StrategySection.jsx';
 import { bullishStrategies } from './data/bullishStrategies.js';
 import { bearishStrategies } from './data/bearishStrategies.js';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import styles from './App.module.css';
 
 function AppContent() {
@@ -39,6 +41,8 @@ function App() {
   return (
     <ThemeProvider>
       <AppContent />
+      <Analytics />
+      <SpeedInsights />
     </ThemeProvider>
   );
 }
