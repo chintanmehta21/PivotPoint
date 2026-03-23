@@ -21,12 +21,21 @@ class RiskSettings(BaseModel):
     vix_low_threshold: float = 14.0
 
 class FyersSettings(BaseModel):
-    """Fyers API configuration (primary market data source)."""
-    app_id: str = ""
-    secret_key: str = ""
-    redirect_url: str = "https://trade.fyers.in/api-login/redirect-uri/abc123"
-    response_type: str = "code"
-    grant_type: str = "authorization_code"
+    """Fyers API operational configuration."""
+    secrets_path: str = "secrets/fyers"
+    ws_reconnect_max_delay: int = 30
+    ws_max_symbols: int = 200
+    quotes_batch_size: int = 50
+    rate_limit_per_sec: int = 10
+    rate_limit_per_min: int = 200
+    risk_free_rate: float = 0.065
+    cache_dir: str = "data/candles"
+    strike_range_nifty: int = 500
+    strike_interval_nifty: int = 50
+    strike_range_banknifty: int = 500
+    strike_interval_banknifty: int = 100
+    lot_size_nifty: int = 75
+    lot_size_banknifty: int = 15
 
 class Settings(BaseSettings):
     discord: DiscordSettings = DiscordSettings()
