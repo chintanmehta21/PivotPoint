@@ -6,6 +6,7 @@ export const theme = {
     positive: '#4a9d6e',
     negative: '#c95454',
     border: '#3a3d50',
+    shadow: { hover: '0 4px 12px rgba(0, 0, 0, 0.3)' },
   },
   light: {
     bg: { primary: '#f5f3ef', secondary: '#ffffff', surface: '#edeae4' },
@@ -14,6 +15,7 @@ export const theme = {
     positive: '#2d7a4f',
     negative: '#b83a3a',
     border: '#d4d1cb',
+    shadow: { hover: '0 4px 12px rgba(0, 0, 0, 0.1)' },
   },
   typography: {
     fontHeading: "'Inter', sans-serif",

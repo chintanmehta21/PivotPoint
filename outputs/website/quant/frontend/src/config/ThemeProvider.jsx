@@ -47,6 +47,10 @@ function injectCssVars(modeName) {
   root.style.setProperty('--positive', modeTokens.positive);
   root.style.setProperty('--negative', modeTokens.negative);
   root.style.setProperty('--border', modeTokens.border);
+  // shadow.*
+  Object.entries(modeTokens.shadow).forEach(([key, val]) => {
+    root.style.setProperty(`--shadow-${key}`, val);
+  });
 
   // --- shared tokens (same for both modes) ---
   const { typography, spacing, radius, transitions } = theme;
