@@ -33,6 +33,9 @@ htmlcov/
 *.db
 *.sqlite3
 
+# Candle cache
+data/candles/
+
 # Secrets
 secrets/*
 !secrets/.gitkeep
