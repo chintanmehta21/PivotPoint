@@ -72,3 +72,59 @@ def sample_signal(sample_position: MultiLegPosition, sample_greeks: GreeksSnapsh
         signal_type=SignalType.ENTRY,
         notes="Test signal",
     )
+
+
+from quant.models.daily_report import (
+    DailyReport,
+    MarketMacros,
+    ReportStatus,
+    ReportType,
+    VirtualPortfolio,
+    PortfolioTier,
+)
+
+
+@pytest.fixture
+def sample_market_macros() -> MarketMacros:
+    return MarketMacros(
+        nifty_price=Decimal("22450.30"),
+        nifty_change_pct=1.2,
+        banknifty_price=Decimal("48120.50"),
+        banknifty_change_pct=-0.4,
+        india_vix=14.8,
+        vix_change=-0.6,
+        nifty_pcr_oi=1.12,
+        nifty_max_pain=Decimal("22500"),
+        banknifty_max_pain=Decimal("48000"),
+        nifty_iv_percentile=42.0,
+        banknifty_iv_percentile=38.0,
+        fii_net_cash=Decimal("-1240"),
+        dii_net_cash=Decimal("890"),
+    )
+
+
+@pytest.fixture
+def sample_virtual_portfolio() -> VirtualPortfolio:
+    return VirtualPortfolio(
+        tier=PortfolioTier.CONSERVATIVE,
+        threshold=85,
+        active_positions=3,
+        total_trades=28,
+        realized_pnl=Decimal("42300"),
+        unrealized_pnl=Decimal("8100"),
+        total_pnl=Decimal("50400"),
+        win_rate=0.68,
+        best_strategy="BQ1",
+        worst_strategy="BrM2",
+    )
+
+
+@pytest.fixture
+def sample_daily_report(sample_market_macros) -> DailyReport:
+    return DailyReport(
+        report_type=ReportType.EVENING,
+        report_status=ReportStatus.SUCCESS,
+        date=date(2026, 3, 24),
+        timestamp=datetime(2026, 3, 24, 16, 0, 0),
+        market_macros=sample_market_macros,
+    )
