@@ -1,0 +1,60 @@
+name: Daily Evening Analysis (Test/Holiday Fallback)
+
+on:
+  workflow_dispatch:
+    inputs:
+      force_run:
+        description: "Run even if market is closed (holiday/data unavailable)"
+        required: false
+        default: "true"
+        type: boolean
+
+env:
+  FYERS_APP_ID: ${{ secrets.FYERS_APP_ID }}
+  FYERS_SECRET_KEY: ${{ secrets.FYERS_SECRET_KEY }}
+  FYERS_REDIRECT_URI: ${{ secrets.FYERS_REDIRECT_URI }}
+  FYERS_PIN: ${{ secrets.FYERS_PIN }}
+  DISCORD__BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+  TELEGRAM__BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+
+jobs:
+  evening-scan-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -e ".[dev]"
+
+      - name: Check market status
+        id: market-check
+        run: |
+          python -c "
+          from quant.utils.exceptions import MarketClosedError
+          import sys
+
+          force = '${{ inputs.force_run }}' == 'true'
+
+          try:
+              print('Market check passed')
+          except MarketClosedError as e:
+              if force:
+                  print(f'Market closed ({e}) but force_run=true — using latest available data')
+              else:
+                  print(f'Skipping: {e}')
+                  sys.exit(0)
+          "
+
+      - name: Run evening strategy scan (latest available data)
+        run: pivotpoint scan
+
+      - name: Summary
+        if: always()
+        run: echo "Evening test scan completed at $(TZ=Asia/Kolkata date '+%Y-%m-%d %H:%M IST') [manual/holiday fallback]"
