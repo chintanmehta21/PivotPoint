@@ -1,0 +1,4 @@
+# Manual overrides for holiday checker.
+# Use when exchange_calendars is wrong or NSE announces surprise holidays.
+# Status: HOLIDAY or OPEN (to force-override the calendar library).
+overrides: []
