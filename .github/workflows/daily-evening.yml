@@ -7,11 +7,12 @@ on:
   workflow_dispatch:
 
 env:
-  FYERS_APP_ID: ${{ secrets.FYERS_APP_ID }}
-  FYERS_SECRET_KEY: ${{ secrets.FYERS_SECRET_KEY }}
-  FYERS_REDIRECT_URI: ${{ secrets.FYERS_REDIRECT_URI }}
-  FYERS_PIN: ${{ secrets.FYERS_PIN }}
-  DISCORD__BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+  FYERS__APP_ID: ${{ secrets.FYERS_APP_ID }}
+  FYERS__CLIENT_ID: ${{ secrets.FYERS_CLIENT_ID }}
+  FYERS__SECRET_KEY: ${{ secrets.FYERS_SECRET_KEY }}
+  FYERS__PIN: ${{ secrets.FYERS_PIN }}
+  FYERS__TOTP_KEY: ${{ secrets.FYERS_TOTP_KEY }}
+  DISCORD__WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
   TELEGRAM__BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
 jobs:
@@ -34,14 +35,23 @@ jobs:
         id: market-check
         run: |
           python -c "
-          from quant.data.fyers.client import FyersClient
+          from quant.calendar.holiday_checker import HolidayChecker
           from quant.utils.exceptions import MarketClosedError
+          from datetime import date
           import sys
+
           try:
+              checker = HolidayChecker()
+              today = date.today()
+              if not checker.is_trading_day(today):
+                  holiday_name = checker.get_holiday_name(today) or 'Holiday/Weekend'
+                  raise MarketClosedError('NSE')
               print('Market check passed — proceeding with evening scan')
           except MarketClosedError as e:
-              print(f'Skipping: {e}')
+              print(f'Skipping: {e} ({holiday_name if \"holiday_name\" in dir() else \"closed\"})')
               sys.exit(0)
+          except Exception as e:
+              print(f'Market check failed ({e}), proceeding anyway')
           "
 
       - name: Run evening strategy scan
