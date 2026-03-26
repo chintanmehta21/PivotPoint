@@ -53,6 +53,25 @@ class TestBackfill:
         assert path.exists()
         assert len(pd.read_parquet(path)) == 2
 
+    @pytest.mark.asyncio
+    async def test_calls_get_history_with_correct_args(self, cache, sample_candles):
+        mock_client = AsyncMock()
+        mock_client.get_history.return_value = sample_candles
+        await cache.backfill("NSE:NIFTY50-INDEX", "D", 30, mock_client)
+
+        mock_client.get_history.assert_called_once()
+        call_kwargs = mock_client.get_history.call_args.kwargs
+        assert call_kwargs["symbol"] == "NSE:NIFTY50-INDEX"
+        assert call_kwargs["resolution"] == "1D"
+        assert isinstance(call_kwargs["from_ts"], int)
+        assert isinstance(call_kwargs["to_ts"], int)
+        assert call_kwargs["to_ts"] > call_kwargs["from_ts"]
+        # Must NOT contain old-style parameters
+        assert "date_format" not in call_kwargs
+        assert "range_from" not in call_kwargs
+        assert "range_to" not in call_kwargs
+        assert "cont_flag" not in call_kwargs
+
 class TestUpdate:
     @pytest.mark.asyncio
     async def test_appends_new_candles(self, cache, tmp_path, sample_candles):
@@ -66,3 +85,30 @@ class TestUpdate:
         mock_client.get_history.return_value = {"s": "ok", "candles": [[1711411200, 24050, 24200, 24000, 24150, 900000]]}
         await cache.update("NIFTY50", "D", mock_client)
         assert len(pd.read_parquet(tmp_path / "NIFTY50_D.parquet")) == 2
+
+    @pytest.mark.asyncio
+    async def test_calls_get_history_with_correct_args(self, cache, tmp_path):
+        df = pd.DataFrame({
+            "timestamp": [1711324800], "open": [24000], "high": [24100],
+            "low": [23900], "close": [24050], "volume": [1000000],
+            "date": [date(2024, 3, 25)],
+        })
+        (tmp_path / "NIFTY50_D.parquet").write_bytes(df.to_parquet(index=False))
+        mock_client = AsyncMock()
+        mock_client.get_history.return_value = {"s": "ok", "candles": []}
+        await cache.update("NIFTY50", "D", mock_client)
+
+        mock_client.get_history.assert_called_once()
+        call_kwargs = mock_client.get_history.call_args.kwargs
+        assert call_kwargs["symbol"] == "NIFTY50"
+        assert call_kwargs["resolution"] == "1D"
+        assert isinstance(call_kwargs["from_ts"], int)
+        assert isinstance(call_kwargs["to_ts"], int)
+        # from_ts should be last_ts + 1
+        assert call_kwargs["from_ts"] == 1711324801
+        assert call_kwargs["to_ts"] > call_kwargs["from_ts"]
+        # Must NOT contain old-style parameters
+        assert "date_format" not in call_kwargs
+        assert "range_from" not in call_kwargs
+        assert "range_to" not in call_kwargs
+        assert "cont_flag" not in call_kwargs

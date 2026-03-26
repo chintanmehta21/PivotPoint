@@ -17,10 +17,8 @@ class _HistoryClient(Protocol):
         self,
         symbol: str,
         resolution: str,
-        date_format: int,
-        range_from: str,
-        range_to: str,
-        cont_flag: int,
+        from_ts: int,
+        to_ts: int,
     ) -> dict[str, Any]: ...
 
 
@@ -123,16 +121,14 @@ class CandleCache:
         """Fetch *days* worth of history and persist to parquet (overwrites)."""
         fyers_res = _RESOLUTION_MAP.get(resolution, resolution)
         now = int(time.time())
-        range_from = str(now - days * 86_400)
-        range_to = str(now)
+        from_ts = now - days * 86_400
+        to_ts = now
 
         data = await client.get_history(
             symbol=symbol,
             resolution=fyers_res,
-            date_format=0,
-            range_from=range_from,
-            range_to=range_to,
-            cont_flag=1,
+            from_ts=from_ts,
+            to_ts=to_ts,
         )
 
         candles: list[list[Any]] = data.get("candles", [])
@@ -157,16 +153,14 @@ class CandleCache:
             last_ts = 0
 
         now = int(time.time())
-        range_from = str(last_ts + 1)
-        range_to = str(now)
+        from_ts = last_ts + 1
+        to_ts = now
 
         data = await client.get_history(
             symbol=symbol,
             resolution=fyers_res,
-            date_format=0,
-            range_from=range_from,
-            range_to=range_to,
-            cont_flag=1,
+            from_ts=from_ts,
+            to_ts=to_ts,
         )
 
         candles: list[list[Any]] = data.get("candles", [])
