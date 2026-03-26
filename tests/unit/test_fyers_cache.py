@@ -1,9 +1,10 @@
 """Tests for parquet-based candle cache."""
 from datetime import date
-from pathlib import Path
 from unittest.mock import AsyncMock
+
 import pandas as pd
 import pytest
+
 from quant.data.fyers.cache import CandleCache
 
 @pytest.fixture
