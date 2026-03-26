@@ -8,14 +8,16 @@ on:
 jobs:
   report:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       FYERS__APP_ID: ${{ secrets.FYERS_APP_ID }}
+      FYERS__CLIENT_ID: ${{ secrets.FYERS_CLIENT_ID }}
       FYERS__SECRET_KEY: ${{ secrets.FYERS_SECRET_KEY }}
-      DISCORD__BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
-      DISCORD__CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
+      FYERS__PIN: ${{ secrets.FYERS_PIN }}
+      FYERS__TOTP_KEY: ${{ secrets.FYERS_TOTP_KEY }}
+      DISCORD__WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
       TELEGRAM__BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM__CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-      DATABASE__URL: ${{ secrets.DATABASE_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
